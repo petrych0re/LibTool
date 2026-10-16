@@ -1,0 +1,17 @@
+name: DylibKit
+options:
+  bundleIdPrefix: dev.dylibkit
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  DylibKit:
+    type: application
+    platform: iOS
+    sources:
+      - path: DylibKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.dylibkit.app
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
