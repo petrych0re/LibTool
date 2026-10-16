@@ -1,0 +1,24 @@
+name: DylibKit iOS Build
+on:
+  push:
+    paths:
+      - "DylibKit/**"
+  pull_request:
+    paths:
+      - "DylibKit/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    defaults:
+      run:
+        working-directory: DylibKit
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        run: xcodegen generate
+      - name: Build for iOS
+        run: xcodebuild -project DylibKit.xcodeproj -scheme DylibKit -sdk iphoneos -configuration Release CODE_SIGNING_ALLOWED=NO build
